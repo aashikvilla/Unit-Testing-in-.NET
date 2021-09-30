@@ -27,7 +27,7 @@ namespace app_test
           
             Console.WriteLine("Testing {0} - {1}");
             var actual = Calculator.Subtract(v1, v2);
-            var expected = v1 - v2;
+            var expected = v1 - v2-100;
             Console.WriteLine("aaaaaaaaa", v1, v2);
             Assert.AreEqual(actual, expected);
 
