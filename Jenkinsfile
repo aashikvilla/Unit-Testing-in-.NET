@@ -22,16 +22,6 @@ pipeline {
                   bat "dotnet restore ${solutionName}.sln"
             }
         }
-        stage('Build') {
-            when {
-                branch 'master'
-            }
-            steps {
-                echo 'Compile..  dotnet build  '
-                bat "dotnet build ${pathToProject}.csproj"
-     
-            }
-        }
         stage('Unit Test') {
             steps {
                 echo 'Testing.. dotnet test  '
