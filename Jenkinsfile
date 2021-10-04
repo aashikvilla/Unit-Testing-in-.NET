@@ -21,14 +21,7 @@ pipeline {
                 echo 'Restore..  dotnet restore  '
                   bat "dotnet restore ${solutionName}.sln"
             }
-        }
-        stage('Build') {           
-            steps {
-                echo 'Compile..  dotnet build  '
-                bat "dotnet build ${pathToProject}.csproj"
-     
-            }
-        }
+        }        
         stage('Unit Test') {
             steps {
                 echo 'Testing.. dotnet test  '
