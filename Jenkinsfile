@@ -31,7 +31,7 @@ pipeline {
         stage('Compile & Zip') {
             steps {
                 echo 'Compile..  dotnet build  '
-                bat "dotnet build ${pathToProject}.csproj /T:Publish /p:configuration=${publishConfiguration} /p:framework=${framework} /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:DesktopBuildPackageLocation=\"bin\\debug\\webpackage\\${zipFolderName}\""
+                bat "dotnet build ${pathToProject}.csproj /T:Publish /p:configuration=${publishConfiguration} /p:framework=${framework} /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:DesktopBuildPackageLocation=\"bin\\debug\\webpackage\\${zipFolderName}.zip\""
      
             }
         }
