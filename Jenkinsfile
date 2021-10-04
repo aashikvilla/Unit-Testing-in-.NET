@@ -1,5 +1,5 @@
-def workspace ='Unit-Testing-in-.NET-Core'
-def solutionName='Testing in .NET Core'
+def workspace ='Unit-Testing-in-.NET'
+def solutionName='Unit-Testing-in-.NET'
 
 def pathToProject='app\\app'
 
@@ -22,10 +22,10 @@ pipeline {
                   bat "dotnet restore ${workspace}\\${solutionName}.sln"
             }
         }
-        stage('Compile') {
+        stage('Build') {
             steps {
                 echo 'Compile..  dotnet build  '
-                bat "dotnet build ${workspace}\\${pathToProject}.csproj /T:Publish /p:configuration=${publishConfiguration} /p:framework=${framework} /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:DesktopBuildPackageLocation=\"bin\\debug\\webpackage\\${zipFolderName}\""
+                bat "dotnet build ${workspace}\\${pathToProject}.csproj"
      
             }
         }
@@ -35,6 +35,14 @@ pipeline {
                   bat "dotnet test ${workspace}\\${pathToUnitTestProject}.csproj"
             }
         }
+        stage('Compile & Zip') {
+            steps {
+                echo 'Compile..  dotnet build  '
+                bat "dotnet build ${workspace}\\${pathToProject}.csproj /T:Publish /p:configuration=${publishConfiguration} /p:framework=${framework} /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:DesktopBuildPackageLocation=\"bin\\debug\\webpackage\\${zipFolderName}\""
+     
+            }
+        }
+        
          
         stage('Deploy(Dev)') {
             steps {
