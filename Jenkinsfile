@@ -19,26 +19,26 @@ pipeline {
         stage('Restore') {
             steps {
                 echo 'Restore..  dotnet restore  '
-                  bat "dotnet restore ${workspace}\\${solutionName}.sln"
+                  bat "dotnet restore ${solutionName}.sln"
             }
         }
         stage('Build') {
             steps {
                 echo 'Compile..  dotnet build  '
-                bat "dotnet build ${workspace}\\${pathToProject}.csproj"
+                bat "dotnet build ${pathToProject}.csproj"
      
             }
         }
         stage('Unit Test') {
             steps {
                 echo 'Testing.. dotnet test  '
-                  bat "dotnet test ${workspace}\\${pathToUnitTestProject}.csproj"
+                  bat "dotnet test ${pathToUnitTestProject}.csproj"
             }
         }
         stage('Compile & Zip') {
             steps {
                 echo 'Compile..  dotnet build  '
-                bat "dotnet build ${workspace}\\${pathToProject}.csproj /T:Publish /p:configuration=${publishConfiguration} /p:framework=${framework} /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:DesktopBuildPackageLocation=\"bin\\debug\\webpackage\\${zipFolderName}\""
+                bat "dotnet build ${pathToProject}.csproj /T:Publish /p:configuration=${publishConfiguration} /p:framework=${framework} /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:DesktopBuildPackageLocation=\"bin\\debug\\webpackage\\${zipFolderName}\""
      
             }
         }
