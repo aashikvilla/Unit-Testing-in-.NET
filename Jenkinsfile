@@ -23,6 +23,9 @@ pipeline {
             }
         }
         stage('Build') {
+            when {
+                branch 'master'
+            }
             steps {
                 echo 'Compile..  dotnet build  '
                 bat "dotnet build ${pathToProject}.csproj"
