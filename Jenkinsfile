@@ -3,7 +3,7 @@ def solutionName='Unit-Testing-in-.NET'
 
 def pathToProject='app\\app'
 
-def pathToUnitTestProject='app-test\\app-test’
+def pathToUnitTestProject='app-test\\app-test'
 
 def publishConfiguration='debug'
 def framework='netstandard2.0'
